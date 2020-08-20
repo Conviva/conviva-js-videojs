@@ -3,3 +3,11 @@
 
 ## 4.0.4 (26/JUN/2020)
 * Fixes an issue when an ES5 non-compatible keyword const is used.
+
+## 4.0.3 (28/MAY/2020)
+* Fixes an issue where query parameters from streamUrl were getting removed.
+
+## 4.0.1 (07/APR/2020)
+* Supports Video.js 7.6.6.
+* Introduces a major upgrade to the SDK architecture that simplifies and accelerates Conviva integration.
+* Introduces Analytics, VideoAnalytics, and AdAnalytics to simplify the integration of the SDK.
