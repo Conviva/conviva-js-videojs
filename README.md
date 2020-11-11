@@ -10,7 +10,7 @@ The Conviva JavaScript Video.js module is built on top of <a href="https://githu
 ```
 
 ## Supported Framework Versions
-Video.js : 7.6.6
+Video.js : 7.10.1
 
 ## Note:
 * Refer https://community.conviva.com/ for integration guidelines.
