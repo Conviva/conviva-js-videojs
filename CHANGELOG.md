@@ -1,6 +1,11 @@
 
 # Changelog
 
+## 4.1.2 (12/NOV/2020)
+* Supports auto collection of Screen Resolution of the Display connected to Chromecast. (Core SDK 4.0.18 and above)
+* Supports auto collection of Dropped Frames during playback. (Core SDK 4.0.18 and above)
+* Added handling of video error events like error, contenterror, aderror fired by the player.
+
 ## 4.0.4 (26/JUN/2020)
 * Fixes an issue when an ES5 non-compatible keyword const is used.
 
