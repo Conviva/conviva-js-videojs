@@ -2,6 +2,7 @@
 # Changelog
 
 ## 4.1.2 (12/NOV/2020)
+* Supports Video.js 7.10.1
 * Supports auto collection of Screen Resolution of the Display connected to Chromecast. (Core SDK 4.0.18 and above)
 * Supports auto collection of Dropped Frames during playback. (Core SDK 4.0.18 and above)
 * Added handling of video error events like error, contenterror, aderror fired by the player.
