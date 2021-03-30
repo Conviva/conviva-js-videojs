@@ -1,6 +1,10 @@
 
 # Changelog
 
+## 4.1.8 (30/MAR/2021)
+* Supports Video.js 7.11.5
+* Updated bitrate reporting logic to report current playing segment bitrate instead of downloading segment.
+
 ## 4.1.2 (12/NOV/2020)
 * Supports Video.js 7.10.1
 * Supports auto collection of Screen Resolution of the Display connected to Chromecast. (Core SDK 4.0.18 and above)
