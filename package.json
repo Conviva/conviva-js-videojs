@@ -1,0 +1,23 @@
+{
+  "name": "@convivainc/conviva-js-videojs",
+  "version": "4.1.10",
+  "description": "Conviva js Video.js",
+  "main": "conviva-videojs-module.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Conviva/conviva-js-videojs.git"
+  },
+  "keywords": [
+    "video.js",
+    "videojs",
+    "conviva"
+  ],
+  "author": "ConvivaInc",
+  "bugs": {
+    "url": "https://github.com/Conviva/conviva-js-videojs/issues"
+  },
+  "homepage": "https://github.com/Conviva/conviva-js-videojs#readme",
+  "dependencies": {
+    "@convivainc/conviva-js-coresdk": "^4.4.3"
+  }
+}
