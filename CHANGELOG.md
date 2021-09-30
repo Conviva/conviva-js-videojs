@@ -1,6 +1,11 @@
 
 # Changelog
 
+## 4.1.10 (30/SEP/2021)
+* Supports Video.js 7.15.2.
+* Fixes issue bitrate is not reported for HLS demux stream.
+* Fixes issue of error when dropped video frames api is not available.
+
 ## 4.1.8 (30/MAR/2021)
 * Supports Video.js 7.11.5
 * Updated bitrate reporting logic to report current playing segment bitrate instead of downloading segment.
