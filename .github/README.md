@@ -15,17 +15,6 @@ The Conviva JavaScript Video.js module is built on top of <a href="https://githu
 npm install @convivainc/conviva-js-videojs --save
 ```
 
-## Usage
-
-```
-import Conviva from '@convivainc/conviva-js-coresdk';
-import ConvivaModule from '@convivainc/conviva-js-videojs';
-or
-const Conviva = require('@convivainc/conviva-js-coresdk');
-const ConvivaModule = require('@convivainc/conviva-js-videojs');
-```
-
-
 ## Supported Framework Versions
 Video.js : 7.15.2
 
