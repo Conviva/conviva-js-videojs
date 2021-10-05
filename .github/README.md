@@ -13,6 +13,12 @@ The Conviva JavaScript Video.js module is built on top of <a href="https://githu
 
 ```
 npm install @convivainc/conviva-js-videojs --save
+
+```
+## Install via yarn
+
+```
+yarn add @convivainc/conviva-js-videojs
 ```
 
 ## Supported Framework Versions
