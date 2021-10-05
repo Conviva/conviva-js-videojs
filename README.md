@@ -7,6 +7,12 @@ Conviva Video.js module auto-detects events emitted by Video.js player.
 npm install @convivainc/conviva-js-videojs --save
 ```
 
+## Install via yarn 
+
+```
+yarn add @convivainc/conviva-js-videojs
+```
+
 ## Supported Framework Versions
 Video.js : 7.15.2
 
