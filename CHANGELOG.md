@@ -2,6 +2,7 @@
 # Changelog
 
 ## 4.1.11 (15/MAR/2022)
+* Supports Video.js 7.20.1.
 * Fixes issue where bitrate is not reported for streams without textTracks.
 
 ## 4.1.10 (30/SEP/2021)
