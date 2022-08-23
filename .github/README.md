@@ -9,29 +9,29 @@ Via html:
 <script type="text/javascript" src="<PATH>/conviva-core-sdk.js"></script>
 <script type="text/javascript" src="<PATH>/conviva-videojs-module.js"></script>
 ```
-Via import/require:
-``` 
-const Conviva = require('<path>/conviva-js-coresdk');
-const ConvivaVideojsModule = require('<path>/conviva-js-videojs');
-``` 
-
-``` 
-import Conviva from '@convivainc/conviva-js-coresdk'
-import ConvivaVideojsModule from'@convivainc/conviva-js-videojs'
-``` 
-
 
 ## Install via npm 
 
 ```
 npm install @convivainc/conviva-js-videojs --save
-
 ```
+
 ## Install via yarn
 
 ```
 yarn add @convivainc/conviva-js-videojs
 ```
+Refer to following  sample code to include Video.js components followed by Conviva modules:
+
+Via import/require:
+``` 
+const Conviva = require('<path>/conviva-js-coresdk');
+const ConvivaVideojsModule = require('<path>/conviva-js-videojs');
+``` 
+``` 
+import Conviva from '@convivainc/conviva-js-coresdk'
+import ConvivaVideojsModule from'@convivainc/conviva-js-videojs'
+``` 
 
 ## Supported Framework Versions
 Video.js : 7.20.1
