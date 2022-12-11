@@ -1,6 +1,9 @@
 
 # Changelog
 
+## 4.1.12 (11/DEC/2022)
+* Supports Typescript.
+
 ## 4.1.11 (15/MAR/2022)
 * Supports Video.js 7.20.1.
 * Fixes issue where bitrate is not reported for streams without textTracks.
