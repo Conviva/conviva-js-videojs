@@ -1,6 +1,6 @@
 {
   "name": "@convivainc/conviva-js-videojs",
-  "version": "4.1.12",
+  "version": "4.1.13",
   "description": "Conviva js Video.js",
   "main": "conviva-videojs-module.js",
   "repository": {

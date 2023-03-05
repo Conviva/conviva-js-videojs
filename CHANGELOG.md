@@ -1,6 +1,9 @@
 
 # Changelog
 
+## 4.1.13 (3/MAR/2023)
+* Supports auto collection of Average Bitrate (Core SDK 4.6.1 and above).
+
 ## 4.1.12 (11/DEC/2022)
 * Supports Typescript.
 
