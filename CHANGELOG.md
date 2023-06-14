@@ -1,6 +1,9 @@
 
 # Changelog
 
+## 4.3.0 (14/JUN/2023)
+* Supports Video.js 8.3.0
+
 ## 4.2.1 (6/APR/2023)
 * Supports auto-collection of Audio, Subtitles and Closed Captions Language( Core SDK 4.7.0 and above).
 
