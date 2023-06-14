@@ -136,62 +136,64 @@
                                     }
                                 }
                             }
-                            a && c.attributes.AUDIO && s && s.master && s.master.mediaGroups && s.master.mediaGroups.AUDIO && (r = s.master.mediaGroups.AUDIO[c.attributes.AUDIO]) && (o = r[a.id]) && o.playlists && o.playlists[0] && (s = o.playlists[0].attributes) && s.BANDWIDTH && (i = s.BANDWIDTH);
+                            a && c.attributes.AUDIO && (s && (s.master ? d = s.master : s.main && (d = s.main)), 
+                            d) && d.mediaGroups && d.mediaGroups.AUDIO && (r = d.mediaGroups.AUDIO[c.attributes.AUDIO]) && (o = r[a.id]) && o.playlists && o.playlists[0] && (s = o.playlists[0].attributes) && s.BANDWIDTH && (i = s.BANDWIDTH);
                         }
                     }
-                    var c = Math.round((e + i) / 1e3);
-                    c !== p.O && (p.O = c, p.l.reportPlaybackMetric(l.Constants.Playback.BITRATE, p.O, "CONVIVA")), 
+                    var c, d = Math.round((e + i) / 1e3);
+                    d !== p.O && (p.O = d, p.l.reportPlaybackMetric(l.Constants.Playback.BITRATE, p.O, "CONVIVA")), 
                     (n = Math.round(n / 1e3)) !== p.m && (p.m = n, p.l.reportPlaybackMetric(l.Constants.Playback.AVG_BITRATE, p.m, "CONVIVA")), 
-                    t.value.resolution && t.value.resolution.width && t.value.resolution.height && (r = t.value.resolution.width, 
-                    o = t.value.resolution.height, !isNaN(r) && 0 < r && r !== p.C || !isNaN(o) && 0 < o && o !== p.g) && (p.C = r, 
-                    p.g = o, p.l.reportPlaybackMetric(l.Constants.Playback.RESOLUTION, r, o, "CONVIVA"));
+                    t.value.resolution && t.value.resolution.width && t.value.resolution.height && (c = t.value.resolution.width, 
+                    r = t.value.resolution.height, !isNaN(c) && 0 < c && c !== p.C || !isNaN(r) && 0 < r && r !== p.g) && (p.C = c, 
+                    p.g = r, p.l.reportPlaybackMetric(l.Constants.Playback.RESOLUTION, c, r, "CONVIVA"));
                 }
             }, this.L = function() {
                 var t = 0, i = 0, n = 0, e = 0;
                 if (p.l && p.I !== l.Constants.PlayerState.UNKNOWN) {
                     var o = p.h;
                     if (o) {
-                        var a, s, r = o.tech({
+                        var a, s = o.tech({
                             IWillNotUseThisInPlugins: !0
                         });
-                        if (r) {
-                            if (r.vhs && r.vhs.playlists && r.vhs.playlists.media ? (v = r.vhs.playlists, 
-                            d = r.vhs.playlists.media()) : r.hls && r.hls.playlists && r.hls.playlists.media && (v = r.hls.playlists, 
-                            d = r.hls.playlists.media()), d && d.attributes) {
-                                d.attributes.BANDWIDTH && (n = d.attributes.BANDWIDTH), 
-                                d.attributes["AVERAGE-BANDWIDTH"] && (e = parseInt(d.attributes["AVERAGE-BANDWIDTH"], 10));
-                                var f, u = o.audioTracks();
+                        if (s) {
+                            if (s.vhs && s.vhs.playlists && s.vhs.playlists.media ? (d = s.vhs.playlists, 
+                            v = s.vhs.playlists.media()) : s.hls && s.hls.playlists && s.hls.playlists.media && (d = s.hls.playlists, 
+                            v = s.hls.playlists.media()), v && v.attributes) {
+                                v.attributes.BANDWIDTH && (n = v.attributes.BANDWIDTH), 
+                                v.attributes["AVERAGE-BANDWIDTH"] && (e = parseInt(v.attributes["AVERAGE-BANDWIDTH"], 10));
+                                var r, f, u = o.audioTracks();
                                 if (u && 0 < u.length) for (var h = 0; h < u.length; h++) {
                                     var c = u[h];
                                     if (c.enabled) {
-                                        f = c;
+                                        r = c;
                                         break;
                                     }
                                 }
-                                return t = n + (i = f && d.attributes.AUDIO && v && v.master && v.master.mediaGroups && v.master.mediaGroups.AUDIO && (v = v.master.mediaGroups.AUDIO[d.attributes.AUDIO]) && (d = v[f.id]) && d.playlists && d.playlists[0] && (v = d.playlists[0].attributes) && v.BANDWIDTH ? v.BANDWIDTH : i), 
-                                (a = Math.round(t / 1e3)) !== p.O && (p.O = a, p.l.reportPlaybackMetric(l.Constants.Playback.BITRATE, p.O, "CONVIVA")), 
+                                return t = n + (i = r && v.attributes.AUDIO && (d && (d.master ? f = d.master : d.main && (f = d.main)), 
+                                f) && f.mediaGroups && f.mediaGroups.AUDIO && (d = f.mediaGroups.AUDIO[v.attributes.AUDIO]) && (f = d[r.id]) && f.playlists && f.playlists[0] && (v = f.playlists[0].attributes) && v.BANDWIDTH ? v.BANDWIDTH : i), 
+                                (f = Math.round(t / 1e3)) !== p.O && (p.O = f, p.l.reportPlaybackMetric(l.Constants.Playback.BITRATE, p.O, "CONVIVA")), 
                                 void ((e = Math.round(e / 1e3)) !== p.m && (p.m = e, 
                                 p.l.reportPlaybackMetric(l.Constants.Playback.AVG_BITRATE, p.m, "CONVIVA")));
                             }
-                            var d = r.shakaPlayer_ || r.shaka_ || r.shakaPlayer;
+                            var d = s.shakaPlayer_ || s.shaka_ || s.shakaPlayer;
                             if (d && "function" == typeof d.getStats) {
                                 var v = d.getStats();
-                                if (v && v.streamBandwidth) return void ((a = Math.round(v.streamBandwidth / 1e3)) !== p.O && (p.O = a, 
+                                if (v && v.streamBandwidth) return void ((f = Math.round(v.streamBandwidth / 1e3)) !== p.O && (p.O = f, 
                                 p.l.reportPlaybackMetric(l.Constants.Playback.BITRATE, p.O, "CONVIVA")));
                             }
-                            var e = r.hls_;
+                            var e = s.hls_;
                             if (e && e.levels && 0 <= e.currentLevel) {
                                 var d = e.levels[e.currentLevel];
-                                if (d && d.bitrate) return void ((a = Math.round(d.bitrate / 1e3)) !== p.O && (p.O = a, 
+                                if (d && d.bitrate) return void ((f = Math.round(d.bitrate / 1e3)) !== p.O && (p.O = f, 
                                 p.l.reportPlaybackMetric(l.Constants.Playback.BITRATE, p.O, "CONVIVA")));
                             }
                         }
-                        o.mediaPlayer ? s = o.mediaPlayer : o.dash && o.dash.mediaPlayer && (s = o.dash.mediaPlayer), 
-                        s && "function" == typeof s.getQualityFor && "function" == typeof s.getBitrateInfoListFor && (v = s.getQualityFor("audio"), 
-                        r = s.getBitrateInfoListFor("audio"), void 0 !== v && r && r[v] && r[v].bitrate && (i = r[v].bitrate), 
-                        e = s.getQualityFor("video"), d = s.getBitrateInfoListFor("video"), 
+                        o.mediaPlayer ? a = o.mediaPlayer : o.dash && o.dash.mediaPlayer && (a = o.dash.mediaPlayer), 
+                        a && "function" == typeof a.getQualityFor && "function" == typeof a.getBitrateInfoListFor && (v = a.getQualityFor("audio"), 
+                        s = a.getBitrateInfoListFor("audio"), void 0 !== v && s && s[v] && s[v].bitrate && (i = s[v].bitrate), 
+                        e = a.getQualityFor("video"), d = a.getBitrateInfoListFor("video"), 
                         t = i + (n = void 0 !== e && d && d[e] && d[e].bitrate ? d[e].bitrate : n), 
-                        (a = Math.round(t / 1e3)) !== p.O) && (p.O = a, p.l.reportPlaybackMetric(l.Constants.Playback.BITRATE, p.O, "CONVIVA"));
+                        (f = Math.round(t / 1e3)) !== p.O) && (p.O = f, p.l.reportPlaybackMetric(l.Constants.Playback.BITRATE, p.O, "CONVIVA"));
                     }
                 }
             }, this.getBufferLength = function() {
@@ -218,12 +220,12 @@
                     var i, n = !0, e = !0, o = (p.at && ((i = p.h.playlist && p.h.playlist() && 0 < p.h.playlist().length ? p.h.playlist()[p.h.playlist.currentItem()] : p.h.mediainfo) && (((o = i.custom_fields || i.customFields) && (o.isLive || o.islive) || 0 < i.duration) && (n = !1), 
                     0 < i.duration) && (e = !1), p.st) && void 0 !== p.st.isLive && (n = !1), 
                     {});
-                    if (p.h && p.h.playlist && "function" == typeof p.h.playlist.currentItem && (e || n)) {
+                    if (p.h && (e || n)) {
                         var a, s = !1;
                         switch (t.type) {
                           case "play":
                           case "waiting":
-                            -1 === p.h.playlist.currentItem() && (s = !0);
+                            (void 0 === p.h.playlist || p.h.playlist && -1 === p.h.playlist.currentItem()) && (s = !0);
                             break;
 
                           case "playing":
@@ -289,7 +291,7 @@
                 p.I = l.Constants.PlayerState.UNKNOWN, p.O = 0, p.j = -1, p.M = "", 
                 p.P = null, p.it();
                 var t = {};
-                t[l.Constants.MODULE_NAME] = "BC", t[l.Constants.MODULE_VERSION] = "4.2.1", 
+                t[l.Constants.MODULE_NAME] = "BC", t[l.Constants.MODULE_VERSION] = "4.3.0", 
                 p.l.setContentInfo(t), this._() || this.T(), !p._() && p.k || (p.L(), 
                 "function" == typeof p.h.videoWidth && "function" == typeof p.h.videoHeight && (i = p.h.videoWidth(), 
                 t = p.h.videoHeight(), !isNaN(i) && 0 < i && i !== p.C || !isNaN(t) && 0 < t && t !== p.g) && (p.C = i, 
@@ -304,7 +306,7 @@
                 s[e.Constants.MODULE_NAME] = "Video JS", (t = {})[e.Constants.FRAMEWORK_NAME] = "Video JS", 
                 "undefined" != typeof videojs && (t[e.Constants.FRAMEWORK_VERSION] = videojs.VERSION), 
                 this.l.setPlayerInfo(t)) : (this.gt = o, this.st = a, s[e.Constants.MODULE_NAME] = "BC", 
-                this.at = !0), s[e.Constants.MODULE_VERSION] = "4.2.1", this.p("videojsProxy._constr()"), 
+                this.at = !0), s[e.Constants.MODULE_VERSION] = "4.3.0", this.p("videojsProxy._constr()"), 
                 this.B = [], this.U(), this.et(), this.Ct(), this.ft(), this.W(), 
                 this.it(), this.l.setContentInfo(s), this._() || this.T(), !p._() && p.k || (p.L(), 
                 "function" == typeof p.h.videoWidth && "function" == typeof p.h.videoHeight && (n = p.h.videoWidth(), 
