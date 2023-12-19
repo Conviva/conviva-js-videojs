@@ -217,7 +217,7 @@
                 p.et(), p.ot = !0);
             }, this.D = function(t) {
                 if (p.l) {
-                    var i, n = !0, e = !0, o = (p.at && ((i = p.h.playlist && p.h.playlist() && 0 < p.h.playlist().length ? p.h.playlist()[p.h.playlist.currentItem()] : p.h.mediainfo) && (((o = i.custom_fields || i.customFields) && (o.isLive || o.islive) || 0 < i.duration) && (n = !1), 
+                    var i, n = !0, e = !0, o = (p.at && ((i = p.h.playlist && p.h.playlist() && 0 < p.h.playlist().length ? p.h.playlist()[p.h.playlist.currentItem()] : p.h.mediainfo) && (((o = i.custom_fields || i.customFields) && (o.isLive || o.islive) || i.duration && 0 < i.duration && i.duration !== 1 / 0) && (n = !1),
                     0 < i.duration) && (e = !1), p.st) && void 0 !== p.st.isLive && (n = !1), 
                     {});
                     if (p.h && (e || n)) {
@@ -291,7 +291,7 @@
                 p.I = l.Constants.PlayerState.UNKNOWN, p.O = 0, p.j = -1, p.M = "", 
                 p.P = null, p.it();
                 var t = {};
-                t[l.Constants.MODULE_NAME] = "BC", t[l.Constants.MODULE_VERSION] = "4.3.0", 
+                t[l.Constants.MODULE_NAME] = "BC", t[l.Constants.MODULE_VERSION] = "4.3.1",
                 p.l.setContentInfo(t), this._() || this.T(), !p._() && p.k || (p.L(), 
                 "function" == typeof p.h.videoWidth && "function" == typeof p.h.videoHeight && (i = p.h.videoWidth(), 
                 t = p.h.videoHeight(), !isNaN(i) && 0 < i && i !== p.C || !isNaN(t) && 0 < t && t !== p.g) && (p.C = i, 
@@ -306,7 +306,7 @@
                 s[e.Constants.MODULE_NAME] = "Video JS", (t = {})[e.Constants.FRAMEWORK_NAME] = "Video JS", 
                 "undefined" != typeof videojs && (t[e.Constants.FRAMEWORK_VERSION] = videojs.VERSION), 
                 this.l.setPlayerInfo(t)) : (this.gt = o, this.st = a, s[e.Constants.MODULE_NAME] = "BC", 
-                this.at = !0), s[e.Constants.MODULE_VERSION] = "4.3.0", this.p("videojsProxy._constr()"), 
+                this.at = !0), s[e.Constants.MODULE_VERSION] = "4.3.1", this.p("videojsProxy._constr()"),
                 this.B = [], this.U(), this.et(), this.Ct(), this.ft(), this.W(), 
                 this.it(), this.l.setContentInfo(s), this._() || this.T(), !p._() && p.k || (p.L(), 
                 "function" == typeof p.h.videoWidth && "function" == typeof p.h.videoHeight && (n = p.h.videoWidth(), 

@@ -14,7 +14,7 @@ yarn add @convivainc/conviva-js-videojs
 ```
 
 ## Supported Framework Versions
-Video.js : 7.20.1
+Video.js : 8.6.1
 
 ## Note:
 * Refer https://community.conviva.com/ for integration guidelines.
