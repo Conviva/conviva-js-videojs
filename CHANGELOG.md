@@ -1,5 +1,8 @@
 
 # Changelog
+## 4.3.2 (05/FEB/2024)
+* Includes code stability changes
+
 ## 4.3.1 (20/DEC/2023)
 * Supports Video.js 8.6.1
 * Fixed issue in is_live autocollection for Live stream.

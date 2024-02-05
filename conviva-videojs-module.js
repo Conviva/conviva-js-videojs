@@ -1,4 +1,4 @@
-/*! (C) 2023 Conviva, Inc. All rights reserved. Confidential and proprietary. */
+/*! (C) 2024 Conviva, Inc. All rights reserved. Confidential and proprietary. */
 !function(t, i) {
     var n;
     "function" == typeof define && define.amd ? define(i) : ("object" == typeof exports || "object" == typeof module && module.exports) && (module.exports = i()), 
@@ -13,7 +13,8 @@
         function t(t, i, n, l) {
             var p = this, a = (p.t = [], p.i = 0, p.o = 0, p.u = !1, "");
             function e() {
-                for (var t = p.h.audioTracks(), i = 0; i < t.length; i++) {
+                var t = p.h.audioTracks();
+                if (null !== t) for (var i = 0; i < t.length; i++) {
                     var n = t[i];
                     if (n.enabled) return "" !== n.label && "" !== n.language ? a = "[" + n.language + "]:" + n.label : "" !== n.label && "" === n.language ? a = n.label : "" === n.label && "" !== n.language && (a = n.language), 
                     void (p.v !== a && (p.v = a, p.l.reportPlaybackMetric(l.Constants.Playback.AUDIO_LANGUAGE, p.v, "CONVIVA"), 
@@ -22,7 +23,8 @@
             }
             function o() {
                 if (null !== p.h) {
-                    for (var t = p.h.textTracks(), i = !0, n = !0, e = 0; e < t.length; e++) {
+                    var t = p.h.textTracks(), i = !0, n = !0;
+                    if (t) for (var e = 0; e < t.length; e++) {
                         var o = t[e];
                         if ("showing" === o.mode) return "subtitles" === o.kind && ("" !== o.label && "" !== o.language ? a = "[" + o.language + "]:" + o.label : "" !== o.label && "" === o.language ? a = o.label : "" === o.label && "" !== o.language && (a = o.language), 
                         p.N = a, p.l.reportPlaybackMetric(l.Constants.Playback.SUBTITLES_LANGUAGE, p.N, "CONVIVA"), 
@@ -110,11 +112,13 @@
                 }), p.S = !0);
             }, this.T = function() {
                 if (!p.k) {
-                    for (var t, i = p.h.textTracks(), n = 0; n < i.length; n++) "segment-metadata" === i[n].label && (t = i[n]);
+                    var t, i = p.h.textTracks();
+                    if (i) for (var n = 0; n < i.length; n++) "segment-metadata" === i[n].label && (t = i[n]);
                     t && (t.on("cuechange", p.X), p.k = !0);
                 }
             }, this.Z = function() {
-                for (var t, i = p.h.textTracks(), n = 0; n < i.length; n++) "segment-metadata" === i[n].label && (t = i[n]);
+                var t, i = p.h.textTracks();
+                if (i) for (var n = 0; n < i.length; n++) "segment-metadata" === i[n].label && (t = i[n]);
                 t && (t.off("cuechange", p.X), p.k = !1);
             }, this.X = function() {
                 var t = this.activeCues[0];
@@ -198,10 +202,10 @@
                 }
             }, this.getBufferLength = function() {
                 var t = p.h.buffered();
-                if ("number" != typeof t) return -1;
+                if ("number" != typeof t.length) return -1;
                 for (var i = 0, n = 0; n < t.length; n++) {
                     var e = t.start(n), o = t.end(n);
-                    e <= p.h.currentTime() && p.h.currentTime() < o && (i += o - p.h.currentTime());
+                    p.h.currentTime && e <= p.h.currentTime() && p.h.currentTime() < o && (i += o - p.h.currentTime());
                 }
                 return p.$ = i, 1e3 * p.$;
             }, this.tt = function() {
@@ -211,14 +215,14 @@
                 }
                 p.B = [];
             }, this.it = function() {
-                p.h && (p.nt = p.h.readyState(), 0 === p.h.readyState() || p.h.ended() ? p.G(l.Constants.PlayerState.STOPPED) : (p.h.paused() || p.h.seeking()) && p.G(l.Constants.PlayerState.PAUSED));
+                p.h && (0 === p.h.readyState() || p.h.ended() ? p.G(l.Constants.PlayerState.STOPPED) : (p.h.paused() || p.h.seeking()) && p.G(l.Constants.PlayerState.PAUSED));
             }, this.G = function(t) {
                 p.l && (p.I = t, p.l.reportPlaybackMetric(l.Constants.Playback.PLAYER_STATE, p.I, "CONVIVA"), 
-                p.et(), p.ot = !0);
+                p.nt(), p.et = !0);
             }, this.D = function(t) {
                 if (p.l) {
-                    var i, n = !0, e = !0, o = (p.at && ((i = p.h.playlist && p.h.playlist() && 0 < p.h.playlist().length ? p.h.playlist()[p.h.playlist.currentItem()] : p.h.mediainfo) && (((o = i.custom_fields || i.customFields) && (o.isLive || o.islive) || i.duration && 0 < i.duration && i.duration !== 1 / 0) && (n = !1),
-                    0 < i.duration) && (e = !1), p.st) && void 0 !== p.st.isLive && (n = !1), 
+                    var i, n = !0, e = !0, o = (p.ot && ((i = p.h.playlist && p.h.playlist() && 0 < p.h.playlist().length ? p.h.playlist()[p.h.playlist.currentItem()] : p.h.mediainfo) && (((o = i.custom_fields || i.customFields) && (o.isLive || o.islive) || i.duration && 0 < i.duration && i.duration !== 1 / 0) && (n = !1), 
+                    0 < i.duration) && (e = !1), p.at) && void 0 !== p.at.isLive && (n = !1), 
                     {});
                     if (p.h && (e || n)) {
                         var a, s = !1;
@@ -237,30 +241,28 @@
                           case "durationChange":
                             s = !0;
                         }
-                        s && ("function" == typeof p.h.duration && (a = p.h.duration(), 
-                        p.h.duration() === 1 / 0 || isNaN(p.h.duration()) || (a = Math.round(p.h.duration()))), 
-                        a) && a !== p.j && ((p.j = a) === 1 / 0 ? n && (o[l.Constants.IS_LIVE] = l.Constants.StreamType.LIVE) : 0 < a && (e && (o[l.Constants.DURATION] = a), 
+                        s && (a = "function" != typeof p.h.duration || p.h.duration() === 1 / 0 || isNaN(p.h.duration()) ? a : Math.round(p.h.duration())) && a !== p.j && ((p.j = a) === 1 / 0 ? n && (o[l.Constants.IS_LIVE] = l.Constants.StreamType.LIVE) : 0 < a && (e && (o[l.Constants.DURATION] = a), 
                         n) && (o[l.Constants.IS_LIVE] = l.Constants.StreamType.VOD));
                     }
                     "function" == typeof p.h.currentSource && p.h.currentSource().src && (i = p.h.currentSource().src) !== p.M && (p.M = i, 
                     o[l.Constants.STREAM_URL] = i), "{}" !== JSON.stringify(o) && p.l.setContentInfo(o);
                 }
-            }, this.rt = function() {
+            }, this.st = function() {
                 var t;
                 p.h && "function" == typeof p.h.getVideoPlaybackQuality && p.h.getVideoPlaybackQuality() && (t = p.h.getVideoPlaybackQuality().droppedVideoFrames) && 0 < t && t !== p.P && (p.P = t, 
                 p.l.reportPlaybackMetric(l.Constants.Playback.DROPPED_FRAMES_TOTAL, p.P, "CONVIVA"));
-            }, this.ft = function() {
-                this.ut = 0, this.ht = 0, this.$ = 0, this.ct = this.dt.createTimer(this.vt, 100, "videojsProxy._poll()");
-            }, this.vt = function() {
-                p.l && (p.l.getAdType() !== l.Constants.AdType.CLIENT_SIDE && p.h ? (p.l.reportPlaybackMetric(l.Constants.Playback.PLAY_HEAD_TIME, 1e3 * p.h.currentTime(), "CONVIVA"), 
+            }, this.rt = function() {
+                this.ft = 0, this.ut = 0, this.$ = 0, this.ht = this.ct.createTimer(this.dt, 100, "videojsProxy._poll()");
+            }, this.dt = function() {
+                p.l && (p.l.getAdType() !== l.Constants.AdType.CLIENT_SIDE && p.h ? (void 0 !== p.h.currentTime() && p.l.reportPlaybackMetric(l.Constants.Playback.PLAY_HEAD_TIME, 1e3 * p.h.currentTime(), "CONVIVA"), 
                 p.l.reportPlaybackMetric(l.Constants.Playback.BUFFER_LENGTH, p.getBufferLength(), "CONVIVA"), 
-                p.lt(), p.Nt(), p.rt()) : p.I !== l.Constants.PlayerState.UNKNOWN && (p.I = l.Constants.PlayerState.UNKNOWN));
-            }, this.lt = function() {
-                p.ut = p.ht, p.ht = p.h.currentTime();
+                p.vt(), p.lt(), p.st()) : p.I !== l.Constants.PlayerState.UNKNOWN && (p.I = l.Constants.PlayerState.UNKNOWN));
+            }, this.vt = function() {
+                p.ft = p.ut, void 0 !== p.h.currentTime() && (p.ut = p.h.currentTime());
                 var t, i = Date.now();
-                0 < p.Vt && i > p.Vt && (t = (t = (t = p.ht - p.ut) < 0 ? 0 : t) / (i - p.Vt) * 1e3, 
-                p.t.push(t)), p.Vt = i, p.t.length > Math.max(8, 4) && p.t.shift();
-            }, this.Nt = function() {
+                0 < p.Nt && i > p.Nt && (t = (t = (t = p.ut - p.ft) < 0 ? 0 : t) / (i - p.Nt) * 1e3, 
+                p.t.push(t)), p.Nt = i, p.t.length > Math.max(8, 4) && p.t.shift();
+            }, this.lt = function() {
                 var t = p.t.length;
                 if (t >= Math.min(4, 8)) {
                     for (var i = 0, n = p.t.slice(), e = 0; e < n.length; e++) i += n[e];
@@ -272,26 +274,26 @@
                     p.G(l.Constants.PlayerState.PAUSED)) : p.h.seeking() || p.I !== l.Constants.PlayerState.BUFFERING && (p.p("Adjusting Conviva player state to: BUFFERING"), 
                     p.G(l.Constants.PlayerState.BUFFERING)));
                 }
+            }, this.Vt = function() {
+                this.ht && (this.ht(), this.ht = null);
+            }, this.nt = function() {
+                p.t = [], p.ft = -1, p.Nt = 0;
             }, this.yt = function() {
-                this.ct && (this.ct(), this.ct = null);
-            }, this.et = function() {
-                p.t = [], p.ut = -1, p.Vt = 0;
-            }, this.Ct = function() {
                 p.o = 0, p.i = 0;
             }, this.J = function(t) {
-                p.p("error", t), p.h && p.h.error() && !p.at && (t = "Error Type: " + t.type + ", Error Message: " + p.h.error().message + ", Error Code: " + p.h.error().code, 
+                p.p("error", t), p.h && p.h.error() && !p.ot && (t = "Error Type: " + t.type + ", Error Message: " + p.h.error().message + ", Error Code: " + p.h.error().code, 
                 p.l.reportPlaybackError(t, l.Constants.ErrorSeverity.FATAL));
             }, this.p = function(t) {
-                this.at ? this.gt(t) : this.gt.log(t, l.SystemSettings.LogLevel.DEBUG);
-            }, this.It = function(t, i) {
+                this.ot ? this.Ct(t) : this.Ct.log(t, l.SystemSettings.LogLevel.DEBUG);
+            }, this.gt = function(t, i) {
                 if (!t) throw new Error("bcVideojsProxy: player argument cannot be null.");
                 p.h = t, p.l = i, p.p("bcVideojsProxy.update()"), 0 === p.B.length && p.U(), 
-                p.et(), p.Ct(), p.yt(), p.ft(), p.R = !1, p.S = !1, p.v = "", p.V = "", 
+                p.nt(), p.yt(), p.Vt(), p.rt(), p.R = !1, p.S = !1, p.v = "", p.V = "", 
                 p.N = "", p.K = !1, p.H = !1, p.Y(), p.W(), p.C = -1, p.g = -1, 
                 p.I = l.Constants.PlayerState.UNKNOWN, p.O = 0, p.j = -1, p.M = "", 
                 p.P = null, p.it();
                 var t = {};
-                t[l.Constants.MODULE_NAME] = "BC", t[l.Constants.MODULE_VERSION] = "4.3.1",
+                t[l.Constants.MODULE_NAME] = "BC", t[l.Constants.MODULE_VERSION] = "4.3.2", 
                 p.l.setContentInfo(t), this._() || this.T(), !p._() && p.k || (p.L(), 
                 "function" == typeof p.h.videoWidth && "function" == typeof p.h.videoHeight && (i = p.h.videoWidth(), 
                 t = p.h.videoHeight(), !isNaN(i) && 0 < i && i !== p.C || !isNaN(t) && 0 < t && t !== p.g) && (p.C = i, 
@@ -301,31 +303,31 @@
             }, function(t, i, n, e, o, a) {
                 if (!t) throw new Error("videojsProxy: videoElement argument cannot be null.");
                 var s = {};
-                this.at = !1, this.h = t, this.l = n, this.dt = new e.Impl.Html5Timer(), 
-                i ? (this.gt = i.buildLogger(), this.gt.setModuleName("videojsProxy"), 
+                this.ot = !1, this.h = t, this.l = n, this.ct = new e.Impl.Html5Timer(), 
+                i ? (this.Ct = i.buildLogger(), this.Ct.setModuleName("videojsProxy"), 
                 s[e.Constants.MODULE_NAME] = "Video JS", (t = {})[e.Constants.FRAMEWORK_NAME] = "Video JS", 
                 "undefined" != typeof videojs && (t[e.Constants.FRAMEWORK_VERSION] = videojs.VERSION), 
-                this.l.setPlayerInfo(t)) : (this.gt = o, this.st = a, s[e.Constants.MODULE_NAME] = "BC", 
-                this.at = !0), s[e.Constants.MODULE_VERSION] = "4.3.1", this.p("videojsProxy._constr()"),
-                this.B = [], this.U(), this.et(), this.Ct(), this.ft(), this.W(), 
+                this.l.setPlayerInfo(t)) : (this.Ct = o, this.at = a, s[e.Constants.MODULE_NAME] = "BC", 
+                this.ot = !0), s[e.Constants.MODULE_VERSION] = "4.3.2", this.p("videojsProxy._constr()"), 
+                this.B = [], this.U(), this.nt(), this.yt(), this.rt(), this.W(), 
                 this.it(), this.l.setContentInfo(s), this._() || this.T(), !p._() && p.k || (p.L(), 
                 "function" == typeof p.h.videoWidth && "function" == typeof p.h.videoHeight && (n = p.h.videoWidth(), 
                 i = p.h.videoHeight(), !isNaN(n) && 0 < n && n !== p.C || !isNaN(i) && 0 < i && i !== p.g) && (p.C = n, 
                 p.g = i, p.l.reportPlaybackMetric(e.Constants.Playback.RESOLUTION, n, i, "CONVIVA")));
             }.apply(this, arguments), this.cleanup = function() {
-                this.p("videojsProxy.cleanup()"), this.yt(), this.tt(), this._() || this.Z(), 
+                this.p("videojsProxy.cleanup()"), this.Vt(), this.tt(), this._() || this.Z(), 
                 this.h = null, p.l = null, p.C = -1, p.g = -1, p.I = l.Constants.PlayerState.UNKNOWN, 
                 p.O = 0, p.m = 0, p.j = -1, p.M = "", p.P = null, p.k = !1, p.R = !1, 
                 p.S = !1, p.v = "", p.V = "", p.N = "";
             };
         }
         o.ProxyMonitor = {
-            At: null,
+            It: null,
             release: function() {
-                this.At && this.At.cleanup();
+                this.It && this.It.cleanup();
             },
             initConvivaDropIn: function(t, i, n, e) {
-                if (t) return this.At = new o.Impl.VideojsProxy(t, i, n, e), this.At;
+                if (t) return this.It = new o.Impl.VideojsProxy(t, i, n, e), this.It;
                 throw new Error("No player proxy initialized");
             }
         }, void 0 !== o && (o.Impl = o.Impl || {}, o.Impl.VideojsProxy = t);
