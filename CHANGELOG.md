@@ -1,5 +1,8 @@
 
 # Changelog
+## 4.3.3 (18/JUN/2024)
+* Supports Video.js 8.15.0
+
 ## 4.3.2 (05/FEB/2024)
 * Includes code stability changes
 
