@@ -1,12 +1,12 @@
-/*! (C) 2024 Conviva, Inc. All rights reserved. Confidential and proprietary. */
-!function(t, i) {
+/*! (C) 2025 Conviva, Inc. All rights reserved. Confidential and proprietary. */
+((t, i) => {
     var n;
     "function" == typeof define && define.amd ? define(i) : ("object" == typeof exports || "object" == typeof module && module.exports) && (module.exports = i()), 
     void 0 !== t && t && (void 0 !== t.Conviva && t.Conviva ? t.Conviva.ProxyMonitor || t.ConvivaModuleLoading || (n = i(), 
     t.ConvivaModuleLoading = !0, t.Conviva.ProxyMonitor = n.ProxyMonitor, t.Conviva.Impl.VideojsProxy = n.Impl.VideojsProxy, 
     delete t.ConvivaModuleLoading) : t.ConvivaModule || t.ConvivaModuleLoading || (t.ConvivaModuleLoading = !0, 
     t.ConvivaModule = i(), delete t.ConvivaModuleLoading));
-}(this, function() {
+})(this, function() {
     var o = {};
     function t(t, i, n, l) {
         var p = this, a = (p.t = [], p.i = 0, p.o = 0, p.u = !1, "");
@@ -76,7 +76,7 @@
             }), p.q("aderror", function(t) {
                 p.J(t);
             }), p.q("loadedmetadata", function(t) {
-                p.p("loadedmetadata", t), p.D(t), p._() || p.T();
+                p.p("loadedmetadata", t), p.D(t), p.T() || p._();
             }), p.q("loadeddata", function(t) {
                 p.p("loadeddata", t), p.D(t);
             }), p.q("durationchange", function(t) {
@@ -92,7 +92,7 @@
                 p.k || p.L(), p.R || p.W(), p.S || p.Y();
             }), p.q("stalled", function() {}), p.q("resize", function() {
                 var t, i;
-                !p._() && p.k || p.L(), "function" == typeof p.h.videoWidth && "function" == typeof p.h.videoHeight && (t = p.h.videoWidth(), 
+                !p.T() && p.k || p.L(), "function" == typeof p.h.videoWidth && "function" == typeof p.h.videoHeight && (t = p.h.videoWidth(), 
                 i = p.h.videoHeight(), !isNaN(t) && 0 < t && t !== p.C || !isNaN(i) && 0 < i && i !== p.g) && (p.C = t, 
                 p.g = i, p.l.reportPlaybackMetric(l.Constants.Playback.RESOLUTION, t, i, "CONVIVA"));
             });
@@ -106,7 +106,7 @@
             p.S || (p.H = !1, p.K = !1, (t = p.h.textTracks()) && o(), t.addEventListener("change", function() {
                 o();
             }), p.S = !0);
-        }, this.T = function() {
+        }, this._ = function() {
             if (!p.k) {
                 var t, i = p.h.textTracks();
                 if (i) for (var n = 0; n < i.length; n++) "segment-metadata" === i[n].label && (t = i[n]);
@@ -266,7 +266,7 @@
                 for (var i = 0, n = p.t.slice(), e = 0; e < n.length; e++) i += n[e];
                 i /= t;
                 var o = 1, a = .25, s = p.h.playbackRate();
-                !isNaN(s) && s !== 1 / 0 && 0 < s && (o *= s = p._() && s < .5 ? .5 : s, 
+                !isNaN(s) && s !== 1 / 0 && 0 < s && (o *= s = p.T() && s < .5 ? .5 : s, 
                 a *= s), p.I !== l.Constants.PlayerState.PLAYING && 4 <= t && Math.abs(i - o) < a ? p.h.seeking() || (p.p("Adjusting Conviva player state to: PLAYING"), 
                 p.G(l.Constants.PlayerState.PLAYING)) : 8 <= t && 0 === i && (p.h.paused() ? p.I !== l.Constants.PlayerState.PAUSED && (p.p("Adjusting Conviva player state to: PAUSED"), 
                 p.G(l.Constants.PlayerState.PAUSED)) : p.h.seeking() || p.I !== l.Constants.PlayerState.BUFFERING && (p.p("Adjusting Conviva player state to: BUFFERING"), 
@@ -290,12 +290,12 @@
             p.N = "", p.K = !1, p.H = !1, p.Y(), p.W(), p.C = -1, p.g = -1, p.I = l.Constants.PlayerState.UNKNOWN, 
             p.O = 0, p.j = -1, p.M = "", p.P = null, p.it();
             var t = {};
-            t[l.Constants.MODULE_NAME] = "BC", t[l.Constants.MODULE_VERSION] = "4.3.3", 
-            p.l.setContentInfo(t), this._() || this.T(), !p._() && p.k || (p.L(), 
+            t[l.Constants.MODULE_NAME] = "BC", t[l.Constants.MODULE_VERSION] = "4.3.4", 
+            p.l.setContentInfo(t), this.T() || this._(), !p.T() && p.k || (p.L(), 
             "function" == typeof p.h.videoWidth && "function" == typeof p.h.videoHeight && (i = p.h.videoWidth(), 
             t = p.h.videoHeight(), !isNaN(i) && 0 < i && i !== p.C || !isNaN(t) && 0 < t && t !== p.g) && (p.C = i, 
             p.g = t, p.l.reportPlaybackMetric(l.Constants.Playback.RESOLUTION, i, t, "CONVIVA")));
-        }, this._ = function() {
+        }, this.T = function() {
             return /apple/i.test(navigator.vendor);
         }, function(t, i, n, e, o, a) {
             if (!t) throw new Error("videojsProxy: videoElement argument cannot be null.");
@@ -305,26 +305,25 @@
             s[e.Constants.MODULE_NAME] = "Video JS", (t = {})[e.Constants.FRAMEWORK_NAME] = "Video JS", 
             "undefined" != typeof videojs && (t[e.Constants.FRAMEWORK_VERSION] = videojs.VERSION), 
             this.l.setPlayerInfo(t)) : (this.Ct = o, this.at = a, s[e.Constants.MODULE_NAME] = "BC", 
-            this.ot = !0), s[e.Constants.MODULE_VERSION] = "4.3.3", this.p("videojsProxy._constr()"), 
+            this.ot = !0), s[e.Constants.MODULE_VERSION] = "4.3.4", this.p("videojsProxy._constr()"), 
             this.B = [], this.U(), this.nt(), this.yt(), this.rt(), this.W(), this.it(), 
-            this.l.setContentInfo(s), this._() || this.T(), !p._() && p.k || (p.L(), 
+            this.l.setContentInfo(s), this.T() || this._(), !p.T() && p.k || (p.L(), 
             "function" == typeof p.h.videoWidth && "function" == typeof p.h.videoHeight && (n = p.h.videoWidth(), 
             i = p.h.videoHeight(), !isNaN(n) && 0 < n && n !== p.C || !isNaN(i) && 0 < i && i !== p.g) && (p.C = n, 
             p.g = i, p.l.reportPlaybackMetric(e.Constants.Playback.RESOLUTION, n, i, "CONVIVA")));
         }.apply(this, arguments), this.cleanup = function() {
-            this.p("videojsProxy.cleanup()"), this.Vt(), this.tt(), this._() || this.Z(), 
+            this.p("videojsProxy.cleanup()"), this.Vt(), this.tt(), this.T() || this.Z(), 
             this.h = null, p.l = null, p.C = -1, p.g = -1, p.I = l.Constants.PlayerState.UNKNOWN, 
             p.O = 0, p.m = 0, p.j = -1, p.M = "", p.P = null, p.k = !1, p.R = !1, 
             p.S = !1, p.v = "", p.V = "", p.N = "";
         };
     }
     return o.ProxyMonitor = {
-        It: null,
-        release: function() {
-            this.It && this.It.cleanup();
+        release: function(t) {
+            t && "function" == typeof t.cleanup && t.cleanup();
         },
         initConvivaDropIn: function(t, i, n, e) {
-            if (t) return this.It = new o.Impl.VideojsProxy(t, i, n, e), this.It;
+            if (t) return new o.Impl.VideojsProxy(t, i, n, e);
             throw new Error("No player proxy initialized");
         }
     }, void 0 !== o && (o.Impl = o.Impl || {}, o.Impl.VideojsProxy = t), o;

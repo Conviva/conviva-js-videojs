@@ -1,5 +1,9 @@
 
 # Changelog
+# Changelog
+## 4.3.4 (29/OCT/2025)
+* Fixed player disposal issue in multi-player environment
+
 ## 4.3.3 (18/OCT/2024)
 * Supports Video.js 8.15.0
 
